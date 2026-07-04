@@ -44,10 +44,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\WinToolbox-Hub.ps1
 Once the files are in the repo, you can fetch and open the launcher with a single command — no manual download. Paste into **Windows PowerShell**:
 
 ```powershell
-$d="$env:LOCALAPPDATA\WinToolbox"; New-Item $d -ItemType Directory -Force | Out-Null; [Net.ServicePointManager]::SecurityProtocol='Tls12'; Invoke-WebRequest "https://raw.githubusercontent.com/sanjulapc/WinToolbox-MaxGaming/main/WinToolbox-Hub.ps1" -OutFile "$d\WinToolbox-Hub.ps1" -UseBasicParsing; Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$d\WinToolbox-Hub.ps1`""
+$d=Join-Path ([Environment]::GetFolderPath('DesktopDirectory')) 'WinToolbox'; New-Item $d -ItemType Directory -Force | Out-Null; [Net.ServicePointManager]::SecurityProtocol='Tls12'; Invoke-WebRequest "https://raw.githubusercontent.com/sanjulapc/WinToolbox-MaxGaming/main/WinToolbox-Hub.ps1" -OutFile "$d\WinToolbox-Hub.ps1" -UseBasicParsing; Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$d\WinToolbox-Hub.ps1`""
 ```
 
-It downloads the launcher to `%LOCALAPPDATA%\WinToolbox` and opens it; the **Download** buttons then pull the toolboxes into that same folder. It runs whatever is in the repo at that moment, so only share this line from a repo you control.
+It downloads the launcher to a **`WinToolbox` folder on your Desktop** and opens it; the **Download** buttons then pull the toolboxes into that same folder. It runs whatever is in the repo at that moment, so only share this line from a repo you control.
 
 **Raw links** (what the launcher and the one-liner use):
 - Hub — `https://raw.githubusercontent.com/sanjulapc/WinToolbox-MaxGaming/main/WinToolbox-Hub.ps1`
